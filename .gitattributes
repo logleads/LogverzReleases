@@ -1,0 +1,8 @@
+#remove listed files and directories during the automatic GitHub release generation
+ReleaseTemplate.md export-ignore
+Versions export-ignore
+ReleaseNotes export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitmessage export-ignore
+Createrelease.ps1 export-ignore

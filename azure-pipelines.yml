@@ -1,0 +1,62 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+variables:
+- group: "Logverz Releases"
+- name: GHTOKENARMGMNT
+  value: $[variables.GHAutomatedReleaseToken]
+- name: RELEASEPROJECTPATH
+  value: $(Pipeline.Workspace)/s/LogverzReleases
+#https://developercommunity.visualstudio.com/t/powershell-task-does-not-provide-access-to-environ/288599
+
+trigger:
+- prod
+
+pool: #'Default'
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+  persistCredentials: true #Important - Persist creds to run further git command
+  clean: true
+- checkout: git://LogverzCore/_git/LogverzCore
+  path: s/LogverzReleases/LogverzCore
+- checkout: git://LogverzPortal/_git/Portal
+  path: s/LogverzReleases/ProjectBuild/build/Portal
+  # https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/checkout-path.md#control-the-checkout-location-of-code
+- checkout: git://LogverzPortal/_git/PortalAccess
+  path: s/LogverzReleases/ProjectBuild/build/PortalAccess
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted #Get-PSRepository
+      Install-Module -Name PowerShellForGitHub # Get-InstalledModule | ? {$_.Name -like "*Git*"}
+      Import-Module -Name PowerShellForGitHub
+      [string]$userName = 'AnyUserName'
+      [string]$userPassword = "$(GHTOKENARMGMNT)"
+      [securestring]$secStringPassword = ConvertTo-SecureString $userPassword -AsPlainText -Force
+      [pscredential]$credObject = New-Object System.Management.Automation.PSCredential ($userName,$secStringPassword)
+      Set-GitHubAuthentication -Credential $credObject
+      Get-GitHubRepository -RepositoryName LogverzReleases -OwnerName logleads
+    failOnStderr: true
+    showWarnings: true
+    pwsh: true
+  displayName: 'Installing dependencies'
+- script: |
+    echo "##[section]root folder contents"
+    pwd &&  tree -L 5
+    echo "##[section]GHTOKENARMGMNT value"
+    echo $(GHTOKENARMGMNT)
+    echo "##[section]RELEASEPROJECTPATH value"
+    echo $(RELEASEPROJECTPATH) 
+    echo "##[section]Environment variables list"
+    printenv
+  displayName: 'Debug'
+- task: PowerShell@2
+  inputs:
+    targetType: 'filePath'
+    filePath: 'LogverzReleases/CreateLogverzRelease.ps1'
+  displayName: 'Execute Release'

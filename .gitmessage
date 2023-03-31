@@ -1,0 +1,37 @@
+# Title: Summary, imperative, start upper case, don't end with a period
+# No more than 50 chars. #### 50 chars is here:  #
+
+# Remember blank line between title and body.
+# Body: Explain *what* and *why* (not *how*). Include issue ID.
+
+# <type>(<scope>): <subject>
+# ..<body>
+# <BLANK LINE>
+# <type>(<scope>): <subject>
+# ..<body>
+# <BLANK LINE>
+
+# feat: A new feature
+# fix: A bug fix
+# docs: Documentation only changes
+# style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+# refactor: A code change that neither fixes a bug nor adds a feature
+# perf: A code change that improves performance
+# test: Adding missing or correcting existing tests
+# chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+# breaking: api parameters modification,changes in default behaviour, dependency changes
+
+# How to Write a Git Commit Message:
+# https://chris.beams.io/posts/git-commit/
+#
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
+
+# Set this template on Windows or Linux via the following commands:
+# git config --global commit.template %userprofile%\Documents\LogverzReleases\.gitmessage
+# git config --global commit.template ~/LogverzReleases/.gitmessage
