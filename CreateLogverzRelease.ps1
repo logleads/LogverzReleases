@@ -65,17 +65,26 @@ if ($gitremoteurl  -ne $corerepobaseurl){
 Import-Module $($projectpath+"/LogverzCore/infrastructure/tools/LogverzBuild.psm1") -Verbose:$false
 
 $extrafiles= get-extrafiles -filepath $($componentpath+"/infrastructure/tools/buildextrafiles.csv")
-$versions=Get-ChildItem $($projectpath+"/Versions") | Sort-Object CreationTime -Descending | select name,creationtime |Select -First 2
+$versions=Get-ChildItem $($projectpath+"/Versions") | Sort-Object Name -Descending | select name,creationtime |Select -First 1
+echo "Selected version: $versions`n`n"
+Get-ChildItem $($projectpath+"/Versions") | format-list
 $latestversion=$($versions[0].Name).Replace(".json","").Replace("v","")
 $buildparameters=Get-Content $($projectpath+"/Versions/v"+$latestversion+".json")|ConvertFrom-Json
 
 $CoreTag=$buildparameters.Core.tag
+Write-host "`nCoreTag: $CoreTag`n"
 $CoreBranchName=$buildparameters.Core.branch
+Write-host "CoreBranchName: $CoreBranchName`n"
 $PortalTag=$buildparameters.Portal.tag
+Write-host "PortalTag: $PortalTag`n"
 $PortalBranch=$buildparameters.Portal.branch
+Write-host "PortalBranch: $PortalBranch`n"
 $PortalAccessTag=$buildparameters.PortalAccess.tag
+Write-host "PortalAccessTag: $PortalAccessTag`n"
 $PortalAccessBranch=$buildparameters.PortalAccess.branch
+Write-host "PortalAccessBranch: $PortalAccessBranch`n"
 $ReleaseTag=$latestversion
+Write-host "ReleaseTag: $ReleaseTag`n"
 
 #First time only:
 #Install-Module -Name PowerShellForGitHub
