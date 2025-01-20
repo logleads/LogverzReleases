@@ -67,11 +67,13 @@ Getting started is simple and accessible:
 
 ![Logverz Application Bundle](Docs/Logverz%20Releases%20Diagram.jpg)
 
-📽️ Watch our demo video to see how Logverz simplifies data workflows.
+### 📽  Real-time data processing made simple with Logverz Continuous Collection 
+[![🎥 Real-time data processing made simple with Logverz Continuous Collection 🚀](https://img.youtube.com/vi/AzYY4vYJpmU/maxresdefault.jpg)](https://www.youtube.com/watch?v=AzYY4vYJpmU)  
+<small>*click image to [open video](https://www.youtube.com/watch?v=AzYY4vYJpmU)*</small>
+
+### 📽️ Watch our demo video to see how Logverz simplifies data workflows.
 [![Logverz Data Integration and Analytics Platform Explainer⚡Get insights 10x faster 💰Cut costs by 90%](https://img.youtube.com/vi/-r_EI4e4ukY/maxresdefault.jpg)](https://www.youtube.com/watch?v=-r_EI4e4ukY)  
 <small>*click image to [open video](https://www.youtube.com/watch?v=-r_EI4e4ukY)*</small>
-
-
 
 ________________________________________
 ### :sparkler:Key Features
