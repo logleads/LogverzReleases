@@ -1,0 +1,16 @@
+{
+"Channel":"main",
+"Core":{
+    "tag":"2.0.0",
+    "branch":"main"
+},
+"Portal":{
+    "tag":"2.0.0",
+    "branch":"main"
+},
+"PortalAccess":{
+    "tag":"1.0.2",
+    "branch":"main"
+},
+"ReleaseNotes":"/ReleaseNotes/"
+}
