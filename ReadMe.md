@@ -6,7 +6,7 @@
 
 
 
-# 🚀 Logverz 1.0 is Here! 🎉: 
+# 🚀 Logverz 2.0 is Here! 🎉: 
 
 ## Out of Beta and Into the World of Smarter Logs, Instant Insights
 
@@ -49,14 +49,11 @@ ________________________________________
 > By reducing manual data handling and speeding up the time to actionable insights, Logverz helps your team focus on core business objectives instead of spending hours on data preparation and analysis.
 ________________________________________
 ### 🌟 What’s New in Logverz 1.0?
-1.	Out of Beta—Ready for Real Work
-Logverz is no longer in beta. This release is optimised for scalability and user experience. We’ve made enhancements that simplify workflows and improve usability.
+1. ⏱️ Schedule custom SQL queries with AWS Lambda and receive alerts 🔔 when metrics hit defined thresholds 📊.
 
-2.	Vue 3 for Long-term sustainability. We’ve upgraded the front end to Vue 3, offering:
-* Faster, smoother interactions.
-* A modern, sleek interface.
+2. 🔷 Azure Access, data from your Azure storage account directly
 
-3.	New distributed data-processing engine based on Lambda and world renowned SQLite providing the horse power.
+3. 🔐 Improved identity and acess managment with custom policies, and the support of roles  
 ________________________________________
 ### 🚀 Get Started. It’s Free!
 > Logverz remains free to start, empowering individuals, startups, and small businesses to analyse their data without worrying about upfront costs. 
